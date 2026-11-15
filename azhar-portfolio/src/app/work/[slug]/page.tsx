@@ -97,7 +97,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <Button href={project.codeUrl} variant="primary" size="md" external>
+              <Button href={project.codeUrl} variant="primary" size="md" target="_blank">
                 <Github size={18} />
                 View Source Code
               </Button>
