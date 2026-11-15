@@ -352,3 +352,58 @@ export const projects = PROJECTS.map((item) => ({
   ...item,
   description: item.shortDesc,
 }));
+
+
+// Compatibility exports for the components that consume the legacy content API.
+export const hero = {
+  name: PERSON.name,
+  title: PERSON.title,
+  headline: PERSON.tagline,
+  intro: PERSON.intro,
+  rotatingTags: [
+    "Machine Learning & Deep Learning",
+    "Generative AI & LLM Applications",
+    "Agentic AI & Workflow Automation",
+  ],
+};
+
+export const about = {
+  bio: PERSON.intro,
+  location: PERSON.location,
+  availability: PERSON.availability,
+};
+
+export const navItems = NAV_LINKS.map((item) => ({
+  label: item.label,
+  href: item.href,
+}));
+
+export const socialLinks = [
+  { name: "GitHub", url: PERSON.github, icon: "Github" },
+  { name: "LinkedIn", url: PERSON.linkedin, icon: "Linkedin" },
+  { name: "Email", url: `mailto:${PERSON.email}`, icon: "Mail" },
+  { name: "WhatsApp", url: `https://wa.me/${PERSON.whatsapp.replace(/[^0-9]/g, "")}`, icon: "MessageCircle" },
+];
+
+export const footer = {
+  copyright: `© ${new Date().getFullYear()} ${PERSON.name}. Built with care.`,
+};
+
+export const projectCategories = [
+  "All",
+  ...Array.from(new Set(PROJECTS.map((project) => project.category))),
+];
+
+export const processSteps = [
+  { number: "01", icon: "Search", title: "Discover & Understand", description: "Understand the problem, users, data, and desired outcome before choosing a technical approach." },
+  { number: "02", icon: "PenTool", title: "Plan & Design", description: "Design the solution, data flow, model or agent architecture, and implementation milestones." },
+  { number: "03", icon: "Code", title: "Build & Validate", description: "Develop the application, test its behavior, evaluate results, and refine the implementation." },
+  { number: "04", icon: "Rocket", title: "Deploy & Improve", description: "Prepare the solution for deployment, document it, and improve it using feedback and monitoring." },
+];
+
+export const projectsForSections = PROJECTS.map((project) => ({
+  ...project,
+  description: project.shortDesc,
+  techStack: project.techs,
+  caseStudyUrl: `#${project.slug}`,
+}));
