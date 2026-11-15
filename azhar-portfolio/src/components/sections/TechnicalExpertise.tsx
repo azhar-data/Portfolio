@@ -4,15 +4,8 @@ import { motion } from 'framer-motion'
 import { BarChart2, Brain, Sparkles, Wrench } from 'lucide-react'
 import SkillChip from '@/components/ui/SkillChip'
 
-// Try to import from data layer; fall back to hardcoded groups below
-let SKILL_GROUPS: SkillGroup[]
-try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const content = require('@/data/content')
-  SKILL_GROUPS = content.SKILL_GROUPS
-} catch {
-  SKILL_GROUPS = []
-}
+// Keep this section self-contained to avoid runtime-only CommonJS imports.
+const SKILL_GROUPS: SkillGroup[] = []
 
 interface SkillGroup {
   label: string
