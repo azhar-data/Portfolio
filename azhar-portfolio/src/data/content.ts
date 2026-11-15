@@ -271,3 +271,84 @@ export const EDUCATION = [
     description: "Applied project-based training in ML/DL workflows, data preparation, model evaluation, Flask/FastAPI backend services, and LLM/RAG integrations.",
   },
 ];
+
+
+// Backwards-compatible exports used by the current section components.
+export const techMarqueeItems = TECH_STACK_MARQUEE.map((item) => item.name);
+
+export const skillGroups = SKILL_GROUPS.map((group) => ({
+  title: group.label,
+  icon:
+    group.icon === "Brain" ? "Brain" :
+    group.icon === "Sparkles" ? "Sparkles" :
+    group.icon === "BarChart3" ? "BarChart3" : "Wrench",
+  skills: group.skills.map((name) => ({
+    name,
+    tooltip: group.description,
+  })),
+}));
+
+export const services = [
+  {
+    number: "01",
+    icon: "Bot",
+    title: "AI Agents & Automation",
+    description: "Design and integration of practical AI agents and automated workflows for repetitive business processes.",
+    techChips: ["Python", "LLMs", "Agentic AI", "n8n"],
+  },
+  {
+    number: "02",
+    icon: "BarChart3",
+    title: "Machine Learning Solutions",
+    description: "Data preparation, feature engineering, model training, evaluation, and predictive analytics.",
+    techChips: ["Python", "Scikit-learn", "Pandas", "Model Evaluation"],
+  },
+  {
+    number: "03",
+    icon: "Cpu",
+    title: "Generative AI & RAG",
+    description: "LLM-powered applications, document question answering, embeddings, and retrieval-augmented generation.",
+    techChips: ["LLMs", "LangChain", "RAG", "ChromaDB"],
+  },
+  {
+    number: "04",
+    icon: "MessageSquare",
+    title: "AI Chatbot Integration",
+    description: "Conversational interfaces connected to knowledge sources and supported language-model APIs.",
+    techChips: ["Python", "FastAPI", "LLM APIs"],
+  },
+  {
+    number: "05",
+    icon: "Zap",
+    title: "Workflow Automation",
+    description: "Connect tools and services using event-driven workflows, webhooks, and automation platforms.",
+    techChips: ["n8n", "Webhooks", "APIs"],
+  },
+  {
+    number: "06",
+    icon: "Layout",
+    title: "Data Apps & Dashboards",
+    description: "Interactive data applications that make analysis, reporting, and model outputs easier to use.",
+    techChips: ["Streamlit", "Pandas", "Plotly"],
+  },
+];
+
+export const resumeData = {
+  resumeUrl: PERSON.resumeUrl,
+  overview: PERSON.intro,
+};
+
+export const experience = EXPERIENCE.map((item) => ({
+  ...item,
+  dates: item.startDate + " – " + item.endDate,
+}));
+
+export const education = EDUCATION.map((item) => ({
+  ...item,
+  dates: item.startDate + " – " + item.endDate,
+}));
+
+export const projects = PROJECTS.map((item) => ({
+  ...item,
+  description: item.shortDesc,
+}));
