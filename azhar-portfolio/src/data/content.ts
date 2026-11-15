@@ -407,3 +407,21 @@ export const projectsForSections = PROJECTS.map((project) => ({
   techStack: project.techs,
   caseStudyUrl: `#${project.slug}`,
 }));
+
+
+export const contactInfo = {
+  heading: "Let's Build Something Together",
+  subheading: "Have a project in mind? Tell me about it and let's explore how I can help.",
+  email: PERSON.email,
+  whatsapp: `https://wa.me/${PERSON.whatsapp.replace(/[^0-9]/g, "")}`,
+  location: PERSON.location,
+  projectTypes: [
+    "AI / Machine Learning",
+    "Generative AI / LLM Application",
+    "AI Agent / Workflow Automation",
+    "Data Science / Analytics",
+    "Web Application",
+    "Other",
+  ],
+  budgetRanges: ["Under $500", "$500 – $1,000", "$1,000 – $3,000", "$3,000+"],
+};
