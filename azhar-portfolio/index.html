@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Azhar — AI/ML & Automation Engineer</title>
+  <meta name="description" content="Muhammad Azhar — AI/ML & Automation Engineer specializing in scalable Machine Learning, RAG systems, LLM agents, and automated data pipelines.">
+  
+  <!-- Premium Fonts: Space Grotesk (Headings), Manrope (Body), JetBrains Mono (Code/Badges) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emberDark: '#080b12',
+            emberDeep: '#05070c',
+            emberSurface: '#12141f',
+            emberCard: '#171520',
+            emberBorder: 'rgba(96, 69, 86, 0.4)',
+            emberBorderLight: 'rgba(255, 255, 255, 0.07)',
+            emberPink: '#f24591',
+            emberOrange: '#ff7b2b',
+            emberCoral: '#ff9d81',
+            emberText: '#faf8fc',
+            emberMuted: '#ada9b9',
+            emberSoft: '#747082'
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Manrope"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-color: #080b12;
+      --ember-gradient: linear-gradient(105deg, #f24591 0%, #ff7b2b 100%);
+      --card-gradient: linear-gradient(160deg, #1a1622 0%, #10111a 75%);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: #faf8fc;
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+      background-attachment: fixed;
+    }
+
+    /* Ambient Lighting */
+    .ambient-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(ellipse at 0% 15%, rgba(7, 100, 139, 0.22), transparent 48%),
+        radial-gradient(ellipse at 98% 22%, rgba(242, 69, 145, 0.16), transparent 50%),
+        radial-gradient(ellipse at 50% 65%, rgba(255, 123, 43, 0.08), transparent 55%);
+    }
+
+    /* Grid Overlay */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-size: 64px 64px;
+      background-image: 
+        linear-gradient(to right, rgba(167, 200, 224, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(167, 200, 224, 0.025) 1px, transparent 1px);
+      mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 75%, transparent 100%);
+    }
+
+    /* Ember Text Gradient */
+    .ember-text {
+      background: var(--ember-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Floating Pill Navbar */
+    .nav-pill {
+      background: rgba(14, 16, 26, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Ember Button */
+    .btn-ember {
+      background: var(--ember-gradient);
+      color: #ffffff;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(242, 69, 145, 0.28);
+    }
+    .btn-ember:hover {
+      box-shadow: 0 6px 26px rgba(255, 123, 43, 0.42);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      background: #15131d;
+      border: 1px solid rgba(96, 69, 86, 0.5);
+      color: #faf8fc;
+      transition: all 0.25s ease;
+    }
+    .btn-dark:hover {
+      border-color: #f0818c;
+      background: #1c1826;
+      color: #ffffff;
+      transform: translateY(-1.5px);
+    }
+
+    /* Cards */
+    .ember-card {
+      background: var(--card-gradient);
+      border: 1px solid rgba(96, 69, 86, 0.45);
+      border-radius: 20px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ember-card:hover {
+      border-color: rgba(240, 129, 140, 0.65);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(242, 69, 145, 0.12);
+    }
+
+    /* Concept View Mockup Box */
+    .concept-box {
+      background: #0f121d;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Infinite Marquee */
+    @keyframes scroll-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-marquee 28s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080b12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #252030;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f24591;
+    }
+  </style>
+</head>
+<body class="selection:bg-emberPink selection:text-white relative">
+
+  <!-- Background Layers -->
+  <div class="ambient-glow"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-bar" class="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-emberPink to-emberOrange z-50 transition-all duration-75" style="width: 0%"></div>
+
+  <!-- FLOATING NAVBAR (Awais Exact Floating Bar) -->
+  <div class="fixed top-5 left-0 right-0 z-40 px-4 sm:px-6 flex justify-center pointer-events-none">
+    <header class="nav-pill rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-6 sm:gap-8 max-w-5xl w-full pointer-events-auto">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emberPink to-emberOrange flex items-center justify-center font-display font-bold text-sm text-white shadow-md">
+          A
+        </div>
+        <span class="font-display font-bold text-base tracking-tight text-white">Azhar<span class="ember-text">.dev</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs tracking-wider uppercase font-mono font-medium text-emberMuted">
+        <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+        <a href="#work" class="hover:text-white transition-colors">Projects</a>
+        <a href="#services" class="hover:text-white transition-colors">Services</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+        <a href="#education" class="hover:text-white transition-colors">Education</a>
+        <a href="#resume" class="hover:text-white transition-colors">Resume</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="btn-ember px-4 py-1.5 rounded-full font-display font-medium text-xs flex items-center gap-1.5">
+          <span>Let's Talk</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+        <button id="menu-btn" class="lg:hidden text-emberMuted hover:text-white p-1" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-drawer" class="fixed inset-x-4 top-20 z-40 hidden lg:hidden nav-pill rounded-3xl p-6 border border-emberBorder">
+    <nav class="flex flex-col gap-3 font-mono text-xs uppercase tracking-wider text-emberMuted">
+      <a href="#skills" class="mob-link py-1 hover:text-white">Skills</a>
+      <a href="#work" class="mob-link py-1 hover:text-white">Projects</a>
+      <a href="#services" class="mob-link py-1 hover:text-white">Services</a>
+      <a href="#about" class="mob-link py-1 hover:text-white">About</a>
+      <a href="#experience" class="mob-link py-1 hover:text-white">Experience</a>
+      <a href="#education" class="mob-link py-1 hover:text-white">Education</a>
+      <a href="#resume" class="mob-link py-1 hover:text-white">Resume</a>
+      <a href="#contact" class="mob-link py-1 hover:text-white">Contact</a>
+    </nav>
+  </div>
+
+  <main class="relative z-10 pt-28 sm:pt-36">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="max-w-6xl mx-auto px-6 py-12 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        <!-- Left: Portrait Stage with Glow Backlight & Real User Image -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center">
+          <div class="relative w-full max-w-[340px]">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-emberPink/30 via-purple-600/20 to-emberOrange/25 rounded-full blur-2xl opacity-75"></div>
+
+            <div class="relative rounded-[28px] overflow-hidden bg-gradient-to-b from-[#1c1724] to-[#0c0e18] border border-emberBorder p-3 shadow-2xl">
+              <div class="w-full h-[400px] rounded-[22px] bg-gradient-to-b from-[#181a26] to-[#090b14] border border-white/5 relative overflow-hidden group">
+                <img src="portrait.jpg" alt="Muhammad Azhar - AI/ML & Automation Engineer" class="w-full h-full object-cover object-top rounded-[22px] transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#080b12]/90 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                  <h3 class="font-display font-bold text-lg text-white">Muhammad Azhar</h3>
+                  <p class="text-xs font-mono text-emberCoral tracking-wider uppercase">AI/ML & Automation Engineer</p>
+                  <p class="text-[11px] text-emberMuted">Lahore, Pakistan 📍</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-4">
+              <span class="text-[11px] font-mono uppercase tracking-[0.2em] text-emberMuted">
+                MUHAMMAD AZHAR <span class="text-emberPink">·</span> BUILDING PRACTICAL INTELLIGENCE
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content & Dynamic Headlines from CV -->
+        <div class="lg:col-span-7 flex flex-col items-start gap-6">
+          <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral">
+            <span>MUHAMMAD AZHAR</span>
+            <span class="text-white/20">/</span>
+            <span>AI/ML & AUTOMATION ENGINEER</span>
+          </div>
+
+          <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-[54px] tracking-tight leading-[1.12] text-white">
+            <span id="headline-prefix">I Build AI Systems</span> <br/>
+            <span id="headline-accent" class="ember-text">That Transform Businesses.</span>
+          </h1>
+
+          <p class="text-emberMuted text-base sm:text-lg leading-relaxed max-w-xl">
+            AI/ML & Data Engineer specializing in building scalable machine learning models, LLM applications, and automated data pipelines. Turning complex datasets into actionable, production-ready software.
+          </p>
+
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#112420]/60 border border-[#235848] text-xs font-mono text-emerald-300">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Open to Remote Opportunities, Internships & Freelance Projects</span>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-3.5 py-1 rounded-full text-xs font-mono bg-[#161421] border border-emberBorder text-emberText">
+              RAG Systems
+            </span>
+            <span class="px-3.5 py-1 rounded-full text-xs font-mono bg-[#161421] border border-emberBorder text-emberText">
+              LangChain & AI Agents
+            </span>
+            <span class="px-3.5 py-1 rounded-full text-xs font-mono bg-[#161421] border border-emberBorder text-emberText">
+              Scikit-learn & ML
+            </span>
+            <span class="px-3.5 py-1 rounded-full text-xs font-mono bg-[#161421] border border-emberBorder text-emberText">
+              FastAPI & Python
+            </span>
+            <span class="px-3.5 py-1 rounded-full text-xs font-mono bg-[#161421] border border-emberBorder text-emberText">
+              n8n & Automations
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 pt-3">
+            <a href="#work" class="btn-ember px-6 py-3 rounded-full font-display font-semibold text-sm flex items-center gap-2">
+              <span>Explore My Projects</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#contact" class="btn-dark px-6 py-3 rounded-full font-display font-semibold text-sm flex items-center gap-2">
+              <span>Let's Connect</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#resume" class="px-4 py-3 text-xs font-mono uppercase tracking-wider text-emberMuted hover:text-white transition-colors flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-emberCoral"></i>
+              <span>View Resume</span>
+            </a>
+          </div>
+
+          <!-- Hero Social Squircle Buttons with Real SVGs -->
+          <div class="flex items-center gap-3 pt-2">
+            <span class="text-xs font-mono text-emberSoft uppercase tracking-wider">Connect:</span>
+            
+            <!-- GitHub Button -->
+            <a href="https://github.com/azhar-data" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-[#14121d] border border-emberBorder hover:border-emberPink hover:bg-[#1f192b] flex items-center justify-center text-emberMuted hover:text-white transition-all shadow-sm" aria-label="GitHub">
+              <svg aria-hidden="true" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </a>
+
+            <!-- LinkedIn Button -->
+            <a href="https://www.linkedin.com/in/azhar-ai-engineer" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-[#14121d] border border-emberBorder hover:border-emberPink hover:bg-[#1f192b] flex items-center justify-center text-emberMuted hover:text-white transition-all shadow-sm" aria-label="LinkedIn">
+              <svg aria-hidden="true" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect height="12" width="4" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+
+            <!-- WhatsApp Button -->
+            <a href="https://wa.me/923366958012" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-[#14121d] border border-emberBorder hover:border-emberPink hover:bg-[#1f192b] flex items-center justify-center text-emberMuted hover:text-white transition-all shadow-sm" aria-label="WhatsApp">
+              <svg aria-hidden="true" class="w-[19px] h-[19px]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M20.7 11.7a8.7 8.7 0 0 1-12.9 7.6L3 20.6l1.3-4.7a8.7 8.7 0 1 1 16.4-4.2Z"></path>
+                <path d="M8.1 7.4c.3-.3.6-.2.8.2l.9 1.8c.1.3 0 .5-.3.8l-.5.5c.7 1.5 1.8 2.6 3.4 3.3l.6-.7c.2-.3.5-.3.8-.2l1.8.9c.4.2.4.5.2.9-.5 1-1.2 1.5-2.4 1.3-3.2-.6-6.1-3.5-6.7-6.4-.2-1.1.5-2 1.4-2.4Z"></path>
+              </svg>
+            </a>
+
+            <!-- Email Button -->
+            <a href="mailto:contactbyazhar8@gmail.com" class="w-10 h-10 rounded-xl bg-[#14121d] border border-emberBorder hover:border-emberPink hover:bg-[#1f192b] flex items-center justify-center text-emberMuted hover:text-white transition-all shadow-sm" aria-label="Email">
+              <svg aria-hidden="true" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY MARQUEE -->
+    <section class="py-10 border-y border-white/5 bg-[#0b0e17]/40 overflow-hidden relative">
+      <div class="absolute left-0 inset-y-0 w-28 bg-gradient-to-r from-emberDark to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 inset-y-0 w-28 bg-gradient-to-l from-emberDark to-transparent z-10 pointer-events-none"></div>
+
+      <div class="marquee-track flex items-center gap-8">
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="link" class="w-4 h-4 text-emberPink"></i> LangChain</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="database" class="w-4 h-4 text-emberOrange"></i> ChromaDB & pgvector</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="sparkles" class="w-4 h-4 text-yellow-400"></i> OpenAI & Gemini</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i> Python 3.x</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="bar-chart-2" class="w-4 h-4 text-cyan-400"></i> Scikit-learn</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="layers" class="w-4 h-4 text-purple-400"></i> TensorFlow & PyTorch</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="zap" class="w-4 h-4 text-emberPink"></i> FastAPI</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="table" class="w-4 h-4 text-blue-400"></i> Pandas & NumPy</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="workflow" class="w-4 h-4 text-pink-400"></i> n8n Workflows</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="chrome" class="w-4 h-4 text-orange-400"></i> Selenium & Playwright</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="server" class="w-4 h-4 text-emerald-400"></i> PostgreSQL</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="box" class="w-4 h-4 text-blue-400"></i> Docker</span>
+
+        <!-- Duplicated for continuous loop -->
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="link" class="w-4 h-4 text-emberPink"></i> LangChain</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="database" class="w-4 h-4 text-emberOrange"></i> ChromaDB & pgvector</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="sparkles" class="w-4 h-4 text-yellow-400"></i> OpenAI & Gemini</span>
+        <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#14121f] border border-emberBorder text-xs font-mono font-medium text-white whitespace-nowrap"><i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i> Python 3.x</span>
+      </div>
+    </section>
+
+    <!-- SECTION 01: TECHNICAL ARSENAL -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-24">
+      <div class="mb-14">
+        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">01 · TECHNICAL EXPERTISE</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+          My Technical <span class="ember-text">Arsenal.</span>
+        </h2>
+        <p class="text-emberMuted mt-3 text-sm sm:text-base max-w-xl">
+          Core engineering competencies extracted directly from production ML pipelines and LLM systems.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Card 1: AI & Generative AI -->
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>TECH STACK / 01</span>
+              <i data-lucide="sparkles" class="w-4 h-4 text-emberPink"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">AI & Generative AI</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">RAG systems, LangChain, LLM APIs (OpenAI/Gemini), embeddings, vector search, AI agents, and prompt engineering.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">RAG</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">LangChain</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">OpenAI/Gemini</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">AI Agents</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">ChromaDB</span>
+          </div>
+        </div>
+
+        <!-- Card 2: ML & Data Science -->
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>TECH STACK / 02</span>
+              <i data-lucide="brain" class="w-4 h-4 text-emberOrange"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">ML & Data Science</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Scikit-learn, TensorFlow, PyTorch, Pandas, NumPy, Seaborn, Matplotlib, preprocessing, and model evaluation.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Scikit-learn</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">TensorFlow</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">PyTorch</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Pandas</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">NumPy</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Full-Stack & API Development -->
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>TECH STACK / 03</span>
+              <i data-lucide="zap" class="w-4 h-4 text-purple-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Full-Stack & APIs</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Python, FastAPI, Django, REST APIs, and responsive interactive web frontends.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Python</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">FastAPI</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Django</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Streamlit</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">REST APIs</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Backend & Database Quality -->
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>TECH STACK / 04</span>
+              <i data-lucide="server" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Backend & Quality</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">PostgreSQL/pgvector, SQLAlchemy, JWT auth, Alembic, Celery/Redis pipelines, and Pytest.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">PostgreSQL</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">pgvector</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Celery / Redis</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">SQLAlchemy</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Pytest</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Automation & Web Scraping -->
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>TECH STACK / 05</span>
+              <i data-lucide="workflow" class="w-4 h-4 text-cyan-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Automation & Scraping</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">n8n workflows, Selenium, Playwright headless browser drivers, anti-bot handling, and webhooks.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">n8n</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Selenium</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Playwright</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Webhooks</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Cloud, DevOps & Tools -->
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>TECH STACK / 06</span>
+              <i data-lucide="box" class="w-4 h-4 text-blue-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Cloud & DevOps</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Docker containerization, Git/GitHub version control, AWS cloud hosting, and Vercel deployments.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Docker</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">AWS</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Git / GitHub</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-xs font-mono text-emberMuted">Vercel</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 02: SELECTED WORK -->
+    <section id="work" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">02 ─── SELECTED WORK</p>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl text-white">
+            Selected <span class="ember-text">Work</span>
+          </h2>
+          <p class="text-emberMuted mt-3 text-sm sm:text-base">Real systems directly connected to my GitHub repositories.</p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="work-filters">
+          <button class="filter-tab active px-4 py-2 rounded-full text-xs font-mono text-white bg-emberPink/20 border border-emberPink" data-filter="all">All work</button>
+          <button class="filter-tab px-4 py-2 rounded-full text-xs font-mono text-emberMuted bg-[#161420] border border-emberBorder hover:border-emberPink" data-filter="Agentic systems">Agentic systems</button>
+          <button class="filter-tab px-4 py-2 rounded-full text-xs font-mono text-emberMuted bg-[#161420] border border-emberBorder hover:border-emberPink" data-filter="Document intelligence">Document intelligence</button>
+          <button class="filter-tab px-4 py-2 rounded-full text-xs font-mono text-emberMuted bg-[#161420] border border-emberBorder hover:border-emberPink" data-filter="Machine learning">Machine learning</button>
+          <button class="filter-tab px-4 py-2 rounded-full text-xs font-mono text-emberMuted bg-[#161420] border border-emberBorder hover:border-emberPink" data-filter="Full-stack engineering">Full-stack</button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" id="work-grid">
+        
+        <!-- Repo 1: Dataset Explorer Agent -->
+        <div class="project-card ember-card overflow-hidden flex flex-col justify-between" data-category="Agentic systems">
+          <div class="p-4 bg-[#10121d] border-b border-emberBorder">
+            <div class="concept-box p-4 flex flex-col justify-between h-40">
+              <div class="flex justify-between items-center text-[10px] font-mono text-emberCoral">
+                <span>MULTI-AGENT DATA PROFILING</span>
+                <span>CONCEPT VIEW</span>
+              </div>
+              <div class="space-y-1.5 font-mono text-xs text-emberMuted">
+                <div class="flex items-center gap-2"><span class="text-emberPink">01</span> Offline-first CSV profile & quality audit</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">02</span> Automated outlier isolation & stats</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">03</span> Plotly visualization & ML suggestions</div>
+              </div>
+              <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 100% Offline-First Multi-Agent
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-emberMuted mb-2">
+                <span>01 · Agentic systems</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#1c2e26] border border-[#2b554d] text-[10px] text-emerald-300">Completed</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white mb-2">Dataset Explorer Agent</h3>
+              <p class="text-xs text-emberMuted mb-4 leading-relaxed line-clamp-2">An offline-first, multi-agent system for automated CSV data profiling, quality grading, outlier detection, and ML model recommendations.</p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Python</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Streamlit</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Plotly</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">scikit-learn</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+              <button onclick="openModal('repo-agent')" class="btn-ember px-4 py-2 rounded-full font-display font-semibold text-xs flex-1 text-center">View case study ↗</button>
+              <a href="https://github.com/azhar-data/Dataset_Explorer_Agent" target="_blank" class="px-3 py-2 rounded-full bg-[#12141f] border border-emberBorder text-xs font-mono text-emberMuted hover:text-white flex items-center gap-1.5">
+                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repo 2: RAG Document Assistant -->
+        <div class="project-card ember-card overflow-hidden flex flex-col justify-between" data-category="Document intelligence">
+          <div class="p-4 bg-[#10121d] border-b border-emberBorder">
+            <div class="concept-box p-4 flex flex-col justify-between h-40">
+              <div class="flex justify-between items-center text-[10px] font-mono text-emberCoral">
+                <span>RAG ASSISTANT / CHROMA</span>
+                <span>CONCEPT VIEW</span>
+              </div>
+              <div class="space-y-1.5 font-mono text-xs text-emberMuted">
+                <div class="flex items-center gap-2"><span class="text-emberPink">01</span> Ingest & chunk multiple PDF/TXT files</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">02</span> ChromaDB embedding retrieval</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">03</span> Grounded answers with page citations</div>
+              </div>
+              <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Verified Source Page Numbers
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-emberMuted mb-2">
+                <span>02 · Document intelligence</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#1c2e26] border border-[#2b554d] text-[10px] text-emerald-300">Completed</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white mb-2">RAG Document Assistant</h3>
+              <p class="text-xs text-emberMuted mb-4 leading-relaxed line-clamp-2">Document Q&A assistant built with LangChain, ChromaDB vector store, Hugging Face embeddings, and Streamlit.</p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Python</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">LangChain</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">ChromaDB</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Streamlit</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+              <button onclick="openModal('repo-rag')" class="btn-ember px-4 py-2 rounded-full font-display font-semibold text-xs flex-1 text-center">View case study ↗</button>
+              <a href="https://github.com/azhar-data/RAG-Document-Assistant" target="_blank" class="px-3 py-2 rounded-full bg-[#12141f] border border-emberBorder text-xs font-mono text-emberMuted hover:text-white flex items-center gap-1.5">
+                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repo 3: DragShift Desktop File Studio -->
+        <div class="project-card ember-card overflow-hidden flex flex-col justify-between" data-category="Full-stack engineering">
+          <div class="p-4 bg-[#10121d] border-b border-emberBorder">
+            <div class="concept-box p-4 flex flex-col justify-between h-40">
+              <div class="flex justify-between items-center text-[10px] font-mono text-emberCoral">
+                <span>DESKTOP FILE STUDIO / GUI</span>
+                <span>CONCEPT VIEW</span>
+              </div>
+              <div class="space-y-1.5 font-mono text-xs text-emberMuted">
+                <div class="flex items-center gap-2"><span class="text-emberPink">01</span> High-throughput batch image compression</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">02</span> PDF manipulation, merge & reorder</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">03</span> Clean native desktop UI workflow</div>
+              </div>
+              <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Python 3.12 · Windows Native
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-emberMuted mb-2">
+                <span>03 · Full-stack engineering</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#1c2e26] border border-[#2b554d] text-[10px] text-emerald-300">Completed</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white mb-2">DragShift — Desktop File Studio</h3>
+              <p class="text-xs text-emberMuted mb-4 leading-relaxed line-clamp-2">A modern desktop file studio for fast, practical image and PDF workflows: convert, compress, edit, and organize files.</p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Python 3.12</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Desktop GUI</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Pillow</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">PyPDF</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+              <button onclick="openModal('repo-dragshift')" class="btn-ember px-4 py-2 rounded-full font-display font-semibold text-xs flex-1 text-center">View case study ↗</button>
+              <a href="https://github.com/azhar-data/dragshift_tool_v2" target="_blank" class="px-3 py-2 rounded-full bg-[#12141f] border border-emberBorder text-xs font-mono text-emberMuted hover:text-white flex items-center gap-1.5">
+                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repo 4: Arrowstack Data Science & Regression -->
+        <div class="project-card ember-card overflow-hidden flex flex-col justify-between" data-category="Machine learning">
+          <div class="p-4 bg-[#10121d] border-b border-emberBorder">
+            <div class="concept-box p-4 flex flex-col justify-between h-40">
+              <div class="flex justify-between items-center text-[10px] font-mono text-emberCoral">
+                <span>ARROWSTACK / PREDICTIVE ML</span>
+                <span>CONCEPT VIEW</span>
+              </div>
+              <div class="space-y-1.5 font-mono text-xs text-emberMuted">
+                <div class="flex items-center gap-2"><span class="text-emberPink">01</span> Kaggle Palmer Penguins exploratory EDA</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">02</span> Outlier review & bootstrap intervals</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">03</span> End-to-end predictive regression pipeline</div>
+              </div>
+              <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Tested & Documented
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-emberMuted mb-2">
+                <span>04 · Machine learning</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#1c2e26] border border-[#2b554d] text-[10px] text-emerald-300">Completed</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white mb-2">Arrowstack · Predictive ML & EDA</h3>
+              <p class="text-xs text-emberMuted mb-4 leading-relaxed line-clamp-2">Two reproducible Python data science projects: comprehensive exploratory data analysis and an end-to-end predictive regression pipeline.</p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Python</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Pandas</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Scikit-learn</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Seaborn</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+              <button onclick="openModal('repo-arrowstack')" class="btn-ember px-4 py-2 rounded-full font-display font-semibold text-xs flex-1 text-center">View case study ↗</button>
+              <a href="https://github.com/azhar-data/ARROWSTACK" target="_blank" class="px-3 py-2 rounded-full bg-[#12141f] border border-emberBorder text-xs font-mono text-emberMuted hover:text-white flex items-center gap-1.5">
+                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repo 5: NexSkill ML Project -->
+        <div class="project-card ember-card overflow-hidden flex flex-col justify-between" data-category="Machine learning">
+          <div class="p-4 bg-[#10121d] border-b border-emberBorder">
+            <div class="concept-box p-4 flex flex-col justify-between h-40">
+              <div class="flex justify-between items-center text-[10px] font-mono text-emberCoral">
+                <span>NEXSKILL / ML SUITE</span>
+                <span>CONCEPT VIEW</span>
+              </div>
+              <div class="space-y-1.5 font-mono text-xs text-emberMuted">
+                <div class="flex items-center gap-2"><span class="text-emberPink">01</span> Data preprocessing & feature encoding</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">02</span> Scikit-learn classification & regression</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">03</span> Model evaluation & metric optimization</div>
+              </div>
+              <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Applied ML Workflows
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-emberMuted mb-2">
+                <span>05 · Machine learning</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#1c2e26] border border-[#2b554d] text-[10px] text-emerald-300">Completed</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white mb-2">NexSkill ML & Data Science Suite</h3>
+              <p class="text-xs text-emberMuted mb-4 leading-relaxed line-clamp-2">Hands-on collection of Data Science and Machine Learning projects: data preprocessing, label encoding, scaling, and predictive pipelines.</p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Python</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Scikit-learn</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Pandas</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">NumPy</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+              <button onclick="openModal('repo-nexskill')" class="btn-ember px-4 py-2 rounded-full font-display font-semibold text-xs flex-1 text-center">View case study ↗</button>
+              <a href="https://github.com/azhar-data/Nexskill_project" target="_blank" class="px-3 py-2 rounded-full bg-[#12141f] border border-emberBorder text-xs font-mono text-emberMuted hover:text-white flex items-center gap-1.5">
+                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repo 6: Full-Stack AI by Azhar -->
+        <div class="project-card ember-card overflow-hidden flex flex-col justify-between" data-category="Full-stack engineering">
+          <div class="p-4 bg-[#10121d] border-b border-emberBorder">
+            <div class="concept-box p-4 flex flex-col justify-between h-40">
+              <div class="flex justify-between items-center text-[10px] font-mono text-emberCoral">
+                <span>FULL STACK AI / GENAI</span>
+                <span>CONCEPT VIEW</span>
+              </div>
+              <div class="space-y-1.5 font-mono text-xs text-emberMuted">
+                <div class="flex items-center gap-2"><span class="text-emberPink">01</span> End-to-end data pipelines & scraping</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">02</span> Deep learning & model training routines</div>
+                <div class="flex items-center gap-2"><span class="text-emberPink">03</span> Generative AI & agentic workflow lab</div>
+              </div>
+              <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Complete AI Stack
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-emberMuted mb-2">
+                <span>06 · Full-stack engineering</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#1c2e26] border border-[#2b554d] text-[10px] text-emerald-300">Completed</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white mb-2">Full-Stack AI Engineering Lab</h3>
+              <p class="text-xs text-emberMuted mb-4 leading-relaxed line-clamp-2">Complete repository documenting my full stack AI journey: data analysis, web scraping, ML pipelines, deep learning, and GenAI scripts.</p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Python</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">NumPy & Pandas</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Web Scraping</span>
+                <span class="px-2 py-0.5 rounded bg-[#10121c] border border-white/5 text-[11px] font-mono text-emberSoft">Generative AI</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+              <button onclick="openModal('repo-fullstack')" class="btn-ember px-4 py-2 rounded-full font-display font-semibold text-xs flex-1 text-center">View case study ↗</button>
+              <a href="https://github.com/azhar-data/Full-stack-Ai-by-Azhar" target="_blank" class="px-3 py-2 rounded-full bg-[#12141f] border border-emberBorder text-xs font-mono text-emberMuted hover:text-white flex items-center gap-1.5">
+                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 03: SERVICES -->
+    <section id="services" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="mb-14">
+        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">03 · WHAT I DO</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+          Engineering AI Solutions for <span class="ember-text">Real-World Challenges.</span>
+        </h2>
+        <p class="text-emberMuted mt-3 text-sm sm:text-base max-w-xl">
+          Practical AI engineering shaped around the problem, the people using it, and the systems it needs to work with.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>01</span>
+              <i data-lucide="bot" class="w-5 h-5 text-emberPink"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Custom AI Agents</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Autonomous multi-agent workflows using LangChain & LLM APIs to handle complex, multi-step actions.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">LangChain</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">OpenAI/Gemini</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">FastAPI</span>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>02</span>
+              <i data-lucide="database" class="w-5 h-5 text-emberOrange"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">RAG Knowledge Systems</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Semantic document search and Q&A pipelines over proprietary documents with verified source citations.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">ChromaDB</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">pgvector</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">RAG</span>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>03</span>
+              <i data-lucide="brain" class="w-5 h-5 text-purple-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Machine Learning Models</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">End-to-end ML development: data preprocessing, feature engineering, classification, regression, and model evaluation.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Scikit-learn</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">TensorFlow</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Pandas</span>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>04</span>
+              <i data-lucide="chrome" class="w-5 h-5 text-emerald-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Browser Automation</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Headless data extraction, automated portal navigation, session persistence, and price monitoring.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Selenium</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Playwright</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Python</span>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>05</span>
+              <i data-lucide="workflow" class="w-5 h-5 text-yellow-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Workflow Automation</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Event-driven automations using n8n and REST webhooks to eliminate repetitive data handling.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">n8n</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Webhooks</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Celery</span>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono text-emberCoral mb-4">
+              <span>06</span>
+              <i data-lucide="globe" class="w-5 h-5 text-sky-400"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Full-Stack AI Apps</h3>
+            <p class="text-xs text-emberMuted mb-6 leading-relaxed">Production applications combining FastAPI or Django backends with modern responsive user interfaces.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">FastAPI</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Django</span>
+            <span class="px-2 py-0.5 rounded bg-[#0e101a] text-[11px] font-mono text-emberCoral">Docker</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Banner CTA -->
+      <div class="mt-14 ember-card p-8 sm:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border-emberBorder">
+        <div class="max-w-xl">
+          <div class="text-[11px] font-mono uppercase tracking-widest text-emberCoral mb-2">AI ARCHITECTURE & TAILORED SOLUTIONS</div>
+          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">
+            Have a Complex AI Problem? <span class="ember-text">Let’s Build the Solution.</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-emberMuted mt-3 leading-relaxed">
+            From architecture decisions to a working product, I can help shape the right AI system for your problem and connect it to the tools your team already uses.
+          </p>
+        </div>
+        <a href="#contact" class="btn-ember px-7 py-3.5 rounded-full font-display font-semibold text-xs sm:text-sm whitespace-nowrap">
+          Discuss your project ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 04: PROCESS -->
+    <section id="process" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="mb-14">
+        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">04 · PROCESS</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+          How I <span class="ember-text">work.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono text-emberPink font-bold">01 / 04</span>
+            <h3 class="font-display font-bold text-lg text-white mt-3 mb-2">Scope</h3>
+            <p class="text-xs text-emberMuted leading-relaxed">Define the problem, constraints, edge cases and a clear measurable outcome before writing code.</p>
+          </div>
+        </div>
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono text-emberOrange font-bold">02 / 04</span>
+            <h3 class="font-display font-bold text-lg text-white mt-3 mb-2">Architect</h3>
+            <p class="text-xs text-emberMuted leading-relaxed">Plan the system architecture, model selections, data flow schemas, and integrations.</p>
+          </div>
+        </div>
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono text-purple-400 font-bold">03 / 04</span>
+            <h3 class="font-display font-bold text-lg text-white mt-3 mb-2">Build</h3>
+            <p class="text-xs text-emberMuted leading-relaxed">Implement modular components, rigorous testing, error boundaries, and handle failure paths.</p>
+          </div>
+        </div>
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono text-emerald-400 font-bold">04 / 04</span>
+            <h3 class="font-display font-bold text-lg text-white mt-3 mb-2">Ship & Support</h3>
+            <p class="text-xs text-emberMuted leading-relaxed">Deploy into production, set up active telemetry, observe real metrics, and continuously iterate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <div class="lg:col-span-5 flex flex-col gap-6">
+          <div>
+            <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">05 · BEHIND THE WORK</p>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+              The Engineer <span class="ember-text">Behind the Systems.</span>
+            </h2>
+            <p class="text-xs text-emberMuted mt-3">The thinking, process and principles behind my engineering work.</p>
+          </div>
+
+          <div class="space-y-4 pt-2">
+            <div class="ember-card p-5">
+              <span class="text-[10px] font-mono text-emberPink uppercase tracking-wider font-bold">STAGE 01 · Explore</span>
+              <p class="text-xs text-emberMuted mt-1 leading-relaxed">Understand business requirements, data quality and real-world bottlenecks before choosing any technical tool.</p>
+            </div>
+            <div class="ember-card p-5">
+              <span class="text-[10px] font-mono text-emberOrange uppercase tracking-wider font-bold">STAGE 02 · Engineer</span>
+              <p class="text-xs text-emberMuted mt-1 leading-relaxed">Design resilient AI architectures, integrate models with robust backends and develop deterministic systems.</p>
+            </div>
+            <div class="ember-card p-5">
+              <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-bold">STAGE 03 · Deliver</span>
+              <p class="text-xs text-emberMuted mt-1 leading-relaxed">Build usable products with testing, comprehensive documentation, and observable production performance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="ember-card p-8 sm:p-10 border-emberBorder flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-emberCoral uppercase tracking-widest mb-1">RESEARCH → SYSTEMS → USEFUL SOFTWARE</div>
+              <h3 class="font-display font-bold text-2xl text-white mb-4">
+                I turn intelligent models into software people can use and trust.
+              </h3>
+
+              <div class="space-y-4 text-xs sm:text-sm text-emberMuted leading-relaxed">
+                <p>
+                  I'm <strong class="text-white">Muhammad Azhar</strong>, an AI/ML & Automation Engineer based in Lahore, Pakistan. I specialize in building scalable machine learning models, LLM applications, and automated data pipelines. Skilled in Python, Scikit-Learn, and full-stack integration to turn complex datasets into actionable business solutions.
+                </p>
+                <div>
+                  <h4 class="font-display font-semibold text-white text-sm mb-1">What I build:</h4>
+                  <p class="text-xs text-emberMuted">Offline-first multi-agent systems, RAG document assistants, machine learning prediction engines, automated desktop studios, and high-performance APIs.</p>
+                </div>
+                <div>
+                  <h4 class="font-display font-semibold text-white text-sm mb-1">How I engineer:</h4>
+                  <p class="text-xs text-emberMuted">Rigorous engineering approach to model training, deployment readiness, clean API architecture, and reliable, maintainable end-to-end software development.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 pt-8 mt-6 border-t border-white/5">
+              <a href="https://github.com/azhar-data" target="_blank" class="btn-ember px-5 py-2.5 rounded-full text-xs font-display flex items-center gap-2">
+                <span>Follow the journey on GitHub</span>
+                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+              </a>
+              <a href="#resume" class="btn-dark px-5 py-2.5 rounded-full text-xs font-display">
+                View my resume ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 06: EXPERIENCE -->
+    <section id="experience" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="mb-14">
+        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">06 · EXPERIENCE</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+          The work behind the <span class="ember-text">craft.</span>
+        </h2>
+        <p class="text-emberMuted mt-3 text-sm">Hands-on experience building intelligent features and connected applications.</p>
+      </div>
+
+      <div class="space-y-6 max-w-4xl">
+        
+        <div class="ember-card p-6 sm:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="font-display font-bold text-xl text-white">AI Engineer Intern</h3>
+            <span class="text-xs font-mono px-3 py-1 rounded-full bg-[#161421] border border-emberBorder text-emberCoral">Sep – Nov 2026</span>
+          </div>
+          <p class="text-xs font-mono text-emberMuted mb-4">CodeAlpha</p>
+          <ul class="text-xs text-emberMuted space-y-2 list-disc list-inside mb-6">
+            <li>Contributed AI-powered CRM features using Python, machine learning, and LLM-based workflows.</li>
+            <li>Designed and integrated automated data handling and workflow logic to enhance user customer management capabilities.</li>
+          </ul>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">Python</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">Machine Learning</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">LLM Workflows</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">CRM Integration</span>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 sm:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="font-display font-bold text-xl text-white">AI Intern</h3>
+            <span class="text-xs font-mono px-3 py-1 rounded-full bg-[#161421] border border-emberBorder text-emberCoral">Aug – Oct 2026</span>
+          </div>
+          <p class="text-xs font-mono text-emberMuted mb-4">Arrowstack</p>
+          <ul class="text-xs text-emberMuted space-y-2 list-disc list-inside mb-6">
+            <li>Developed machine learning models and performed exploratory data analysis using Python, Pandas, Scikit-learn, Matplotlib, and Seaborn.</li>
+            <li>Conducted statistical feature extraction and preprocessing pipelines on structured datasets.</li>
+          </ul>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">Python</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">Pandas</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">Scikit-learn</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#0f111a] border border-emberBorder text-[11px] font-mono text-emberMuted">Matplotlib & Seaborn</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 07: EDUCATION & CERTIFICATIONS -->
+    <section id="education" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="mb-14">
+        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">07 · EDUCATION & DEVELOPMENT</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+          The Foundation Behind the <span class="ember-text">Engineering.</span>
+        </h2>
+        <p class="text-emberMuted mt-3 text-sm">Academic computer science degree and specialized full-stack AI applied training.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
+        
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[11px] font-mono text-emberPink uppercase mb-2">DEGREE / 01</div>
+            <h3 class="font-display font-bold text-lg text-white mb-1">Bachelor of Science in Computer Science (BSCS)</h3>
+            <p class="text-xs font-mono text-emberCoral mb-4">University of Education, Lahore · Sep 2024 – Present</p>
+            <p class="text-xs text-emberMuted leading-relaxed">
+              Foundational coursework in computer science, data structures, algorithms, discrete mathematics, and software design principles.
+            </p>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[11px] font-mono text-emberOrange uppercase mb-2">ACADEMIC / 02</div>
+            <h3 class="font-display font-bold text-lg text-white mb-1">Intermediate in Computer Science (ICS)</h3>
+            <p class="text-xs font-mono text-emberCoral mb-4">Superior College · 2022 – 2024</p>
+            <p class="text-xs text-emberMuted leading-relaxed">
+              Higher secondary education focusing on computer science, mathematics, statistics, and physics.
+            </p>
+          </div>
+        </div>
+
+        <div class="ember-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[11px] font-mono text-emerald-400 uppercase mb-2">CERTIFICATION / 03</div>
+            <h3 class="font-display font-bold text-lg text-white mb-1">Full Stack AI Course</h3>
+            <p class="text-xs font-mono text-emberCoral mb-4">NexSkill, Arfa Tower, Lahore · Jun – Sep 2026</p>
+            <p class="text-xs text-emberMuted leading-relaxed">
+              Applied project-based training in ML/DL workflows, data preparation, model evaluation, Flask/FastAPI backend services, and LLM/RAG integrations.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 08: RESUME -->
+    <section id="resume" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-6">
+        <div>
+          <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">08 · RESUME</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+            The Engineer Behind the <span class="ember-text">Work.</span>
+          </h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="https://docs.google.com/document/d/1zJGEQEqWm8xYw1Jc468uTCwmHjmioscj21BI5r6tK2M/export?format=pdf" target="_blank" class="btn-ember px-5 py-2.5 rounded-full font-display font-semibold text-xs flex items-center gap-2">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+          </a>
+          <a href="https://docs.google.com/document/d/1zJGEQEqWm8xYw1Jc468uTCwmHjmioscj21BI5r6tK2M/edit?usp=sharing" target="_blank" class="btn-dark px-4 py-2.5 rounded-full font-display text-xs">
+            Google Doc CV ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="ember-card p-6 sm:p-10">
+        <div class="flex flex-wrap gap-2 pb-6 border-b border-white/5">
+          <button class="resume-tab active px-4 py-2 rounded-full text-xs font-mono bg-emberPink/20 text-white border border-emberPink" onclick="switchResumeTab('overview', this)">Overview</button>
+          <button class="resume-tab px-4 py-2 rounded-full text-xs font-mono text-emberMuted bg-[#13121d] border border-emberBorder hover:border-emberPink" onclick="switchResumeTab('experience', this)">Experience</button>
+          <button class="resume-tab px-4 py-2 rounded-full text-xs font-mono text-emberMuted bg-[#13121d] border border-emberBorder hover:border-emberPink" onclick="switchResumeTab('education', this)">Education</button>
+          <button class="resume-tab px-4 py-2 rounded-full text-xs font-mono text-emberMuted bg-[#13121d] border border-emberBorder hover:border-emberPink" onclick="switchResumeTab('projects', this)">Projects</button>
+        </div>
+
+        <div id="tab-overview" class="tab-pane pt-6">
+          <h3 class="font-display font-bold text-xl text-white mb-2">Muhammad Azhar — Professional Profile</h3>
+          <p class="text-xs text-emberMuted leading-relaxed max-w-2xl mb-6">
+            AI/ML & Data Engineer specializing in building scalable machine learning models, LLM applications, and automated data pipelines. Skilled in Python, Scikit-Learn, and full-stack integration to turn complex datasets into actionable business solutions.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-emberCoral">SPECIALTY</span>
+              <p class="font-display font-bold text-sm text-white mt-0.5">AI/ML & Automation</p>
+            </div>
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-emberCoral">CORE LANGUAGE</span>
+              <p class="font-display font-bold text-sm text-white mt-0.5">Python 3.x</p>
+            </div>
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-emberCoral">LOCATION</span>
+              <p class="font-display font-bold text-sm text-white mt-0.5">Lahore, PK</p>
+            </div>
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-emberCoral">STATUS</span>
+              <p class="font-display font-bold text-sm text-emerald-400 mt-0.5">Open to Hire</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-experience" class="tab-pane hidden pt-6 space-y-4">
+          <div class="border-l-2 border-emberPink pl-4">
+            <h4 class="font-display font-bold text-white text-sm">AI Engineer Intern — CodeAlpha</h4>
+            <p class="text-xs text-emberMuted">Sep – Nov 2026 · AI-powered CRM features and LLM workflows.</p>
+          </div>
+          <div class="border-l-2 border-emberOrange pl-4">
+            <h4 class="font-display font-bold text-white text-sm">AI Intern — Arrowstack</h4>
+            <p class="text-xs text-emberMuted">Aug – Oct 2026 · ML models, statistical feature engineering, Pandas & Scikit-learn.</p>
+          </div>
+        </div>
+
+        <div id="tab-education" class="tab-pane hidden pt-6 space-y-4">
+          <div class="border-l-2 border-cyan-400 pl-4">
+            <h4 class="font-display font-bold text-white text-sm">Bachelor of Science in Computer Science (BSCS)</h4>
+            <p class="text-xs text-emberMuted">University of Education, Lahore · Sep 2024 – Present</p>
+          </div>
+          <div class="border-l-2 border-purple-400 pl-4">
+            <h4 class="font-display font-bold text-white text-sm">Full Stack AI Applied Certification</h4>
+            <p class="text-xs text-emberMuted">NexSkill, Arfa Tower, Lahore · Jun – Sep 2026</p>
+          </div>
+          <div class="border-l-2 border-emerald-400 pl-4">
+            <h4 class="font-display font-bold text-white text-sm">Intermediate in Computer Science (ICS)</h4>
+            <p class="text-xs text-emberMuted">Superior College · 2022 – 2024</p>
+          </div>
+        </div>
+
+        <div id="tab-projects" class="tab-pane hidden pt-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5 text-white">01. Dataset Explorer Agent (Multi-Agent System)</div>
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5 text-white">02. RAG Document Assistant (LangChain & ChromaDB)</div>
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5 text-white">03. DragShift Desktop File Studio (Python 3.12)</div>
+            <div class="p-3 bg-[#0d0f18] rounded-xl border border-white/5 text-white">04. Arrowstack Predictive ML & EDA Pipelines</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 09: CONTACT (100% Precision with Real SVGs on All Cards & Buttons) -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Real Direct Channels & Socials with Native SVGs -->
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <p class="text-xs font-mono font-semibold uppercase tracking-widest text-emberCoral mb-2">09 · LET’S CONNECT</p>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-4">
+              Let's Build Something <span class="ember-text">Intelligent.</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-emberMuted leading-relaxed mb-8">
+              Have an AI project in mind? Tell me what you're building, and let's explore the right solution together.
+            </p>
+
+            <div class="space-y-3">
+              <!-- Real Email Card -->
+              <a href="mailto:contactbyazhar8@gmail.com" class="ember-card p-4 flex items-center justify-between hover:border-emberPink transition-all group">
+                <div class="flex items-center gap-4">
+                  <div class="w-11 h-11 rounded-xl bg-emberPink/10 border border-emberPink/30 flex items-center justify-center text-emberPink group-hover:bg-emberPink/20 transition-colors">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-[10px] font-mono text-emberCoral uppercase tracking-wider font-semibold">EMAIL</p>
+                    <p class="font-display font-semibold text-white text-sm sm:text-base">contactbyazhar8@gmail.com</p>
+                  </div>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-emberMuted group-hover:text-white transition-colors"></i>
+              </a>
+
+              <!-- Real WhatsApp Card with Native WhatsApp SVG -->
+              <a href="https://wa.me/923366958012" target="_blank" rel="noopener noreferrer" class="ember-card p-4 flex items-center justify-between hover:border-emerald-400 transition-all group">
+                <div class="flex items-center gap-4">
+                  <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+                      <path d="M20.7 11.7a8.7 8.7 0 0 1-12.9 7.6L3 20.6l1.3-4.7a8.7 8.7 0 1 1 16.4-4.2Z"></path>
+                      <path d="M8.1 7.4c.3-.3.6-.2.8.2l.9 1.8c.1.3 0 .5-.3.8l-.5.5c.7 1.5 1.8 2.6 3.4 3.3l.6-.7c.2-.3.5-.3.8-.2l1.8.9c.4.2.4.5.2.9-.5 1-1.2 1.5-2.4 1.3-3.2-.6-6.1-3.5-6.7-6.4-.2-1.1.5-2 1.4-2.4Z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">WHATSAPP / PHONE</p>
+                    <p class="font-display font-semibold text-white text-sm sm:text-base">+92-3366958012</p>
+                  </div>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-emberMuted group-hover:text-white transition-colors"></i>
+              </a>
+
+              <!-- Real LinkedIn Card with Native LinkedIn SVG -->
+              <a href="https://www.linkedin.com/in/azhar-ai-engineer" target="_blank" rel="noopener noreferrer" class="ember-card p-4 flex items-center justify-between hover:border-blue-400 transition-all group">
+                <div class="flex items-center gap-4">
+                  <div class="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 transition-colors">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect height="12" width="4" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-[10px] font-mono text-blue-400 uppercase tracking-wider font-semibold">LINKEDIN</p>
+                    <p class="font-display font-semibold text-white text-sm sm:text-base">linkedin.com/in/azhar-ai-engineer</p>
+                  </div>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-emberMuted group-hover:text-white transition-colors"></i>
+              </a>
+
+              <!-- Real GitHub Card with Native GitHub SVG -->
+              <a href="https://github.com/azhar-data" target="_blank" rel="noopener noreferrer" class="ember-card p-4 flex items-center justify-between hover:border-purple-400 transition-all group">
+                <div class="flex items-center gap-4">
+                  <div class="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/20 transition-colors">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                      <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-[10px] font-mono text-purple-400 uppercase tracking-wider font-semibold">GITHUB</p>
+                    <p class="font-display font-semibold text-white text-sm sm:text-base">github.com/azhar-data</p>
+                  </div>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-emberMuted group-hover:text-white transition-colors"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-8 p-4 rounded-xl bg-[#112420]/50 border border-[#235848] text-xs font-mono text-emerald-300 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Open to Remote Opportunities, Internships & Freelance</span>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Form -->
+        <div class="lg:col-span-7">
+          <div class="ember-card p-8 sm:p-10">
+            <h3 class="font-display font-bold text-xl text-white mb-2">Compose Inquiry</h3>
+            <p class="text-xs text-emberMuted mb-6">Fill in your requirements to trigger an architectural consultation.</p>
+
+            <form id="contact-form" onsubmit="handleContact(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-emberCoral mb-1.5">Your Name *</label>
+                  <input type="text" id="c-name" required placeholder="Name" class="w-full px-4 py-2.5 rounded-xl bg-[#0e101a] border border-emberBorder text-white text-xs font-sans focus:outline-none focus:border-emberPink transition-colors">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-emberCoral mb-1.5">Email Address *</label>
+                  <input type="email" id="c-email" required placeholder="email@company.com" class="w-full px-4 py-2.5 rounded-xl bg-[#0e101a] border border-emberBorder text-white text-xs font-sans focus:outline-none focus:border-emberPink transition-colors">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-emberCoral mb-1.5">Project Type *</label>
+                  <select id="c-type" required class="w-full px-4 py-2.5 rounded-xl bg-[#0e101a] border border-emberBorder text-white text-xs font-sans focus:outline-none focus:border-emberPink transition-colors">
+                    <option value="" disabled selected>Select system...</option>
+                    <option value="AI Agent / LLM App">AI Agent / LLM Application</option>
+                    <option value="RAG / Knowledge System">RAG / Knowledge System</option>
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="Workflow Automation">Workflow Automation</option>
+                    <option value="Full-Stack AI Application">Full-Stack AI Application</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-emberCoral mb-1.5">Budget Range</label>
+                  <select id="c-budget" class="w-full px-4 py-2.5 rounded-xl bg-[#0e101a] border border-emberBorder text-white text-xs font-sans focus:outline-none focus:border-emberPink transition-colors">
+                    <option value="Not sure yet">Not sure yet</option>
+                    <option value="Under $1,000">Under $1,000</option>
+                    <option value="$1,000–$5,000">$1,000–$5,000</option>
+                    <option value="$5,000–$10,000">$5,000–$10,000</option>
+                    <option value="$10,000+">$10,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-emberCoral mb-1.5">Project Details *</label>
+                <textarea id="c-msg" rows="4" required placeholder="Tell me about your project, data availability, and expected outcome..." class="w-full px-4 py-2.5 rounded-xl bg-[#0e101a] border border-emberBorder text-white text-xs font-sans focus:outline-none focus:border-emberPink transition-colors"></textarea>
+              </div>
+
+              <button type="submit" id="submit-btn" class="w-full btn-ember py-3.5 rounded-full font-display font-semibold text-xs sm:text-sm flex items-center justify-center gap-2">
+                <span>Compose Email</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </button>
+
+              <div id="c-feedback" class="hidden p-3 rounded-xl text-center text-xs font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+                ✓ Message received! Muhammad Azhar will get in touch with you shortly.
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER with Native SVGs for GitHub, LinkedIn, WhatsApp -->
+  <footer class="border-t border-white/5 bg-[#070910] py-10 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-emberPink to-emberOrange flex items-center justify-center font-display font-bold text-xs text-white">
+          A
+        </div>
+        <span class="font-display font-bold text-base text-white">Azhar<span class="ember-text">.dev</span></span>
+        <span class="text-xs text-emberSoft pl-3">© 2026 Muhammad Azhar</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs font-mono text-emberMuted">
+        <a href="https://github.com/azhar-data" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/azhar-ai-engineer" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect height="12" width="4" x="2" y="9"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://wa.me/923366958012" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M20.7 11.7a8.7 8.7 0 0 1-12.9 7.6L3 20.6l1.3-4.7a8.7 8.7 0 1 1 16.4-4.2Z"></path>
+            <path d="M8.1 7.4c.3-.3.6-.2.8.2l.9 1.8c.1.3 0 .5-.3.8l-.5.5c.7 1.5 1.8 2.6 3.4 3.3l.6-.7c.2-.3.5-.3.8-.2l1.8.9c.4.2.4.5.2.9-.5 1-1.2 1.5-2.4 1.3-3.2-.6-6.1-3.5-6.7-6.4-.2-1.1.5-2 1.4-2.4Z"></path>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+
+      <a href="#" class="btn-dark px-3.5 py-1.5 rounded-full text-xs font-mono text-emberMuted hover:text-white flex items-center gap-1.5">
+        <span>Back to top</span>
+        <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- CASE STUDY MODAL -->
+  <div id="case-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="ember-card max-w-xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 relative border-emberPink/40">
+      <button onclick="closeModal()" class="absolute top-6 right-6 text-emberMuted hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    // Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById('scroll-bar').style.width = ((winScroll / height) * 100) + '%';
+    });
+
+    // Mobile Menu
+    const mBtn = document.getElementById('menu-btn');
+    const mDrawer = document.getElementById('mobile-drawer');
+    mBtn.addEventListener('click', () => mDrawer.classList.toggle('hidden'));
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => mDrawer.classList.add('hidden')));
+
+    // Rotating Headline
+    const rotatingList = [
+      { prefix: "I Build AI Systems", accent: "That Transform Businesses." },
+      { prefix: "I Build Intelligent Apps", accent: "That Solve Real Problems." },
+      { prefix: "I Engineer AI Agents", accent: "That Get Work Done." }
+    ];
+    let rIdx = 0;
+    const pEl = document.getElementById('headline-prefix');
+    const aEl = document.getElementById('headline-accent');
+    setInterval(() => {
+      rIdx = (rIdx + 1) % rotatingList.length;
+      pEl.style.opacity = '0';
+      aEl.style.opacity = '0';
+      setTimeout(() => {
+        pEl.innerText = rotatingList[rIdx].prefix;
+        aEl.innerText = rotatingList[rIdx].accent;
+        pEl.style.opacity = '1';
+        aEl.style.opacity = '1';
+      }, 250);
+    }, 3800);
+
+    // Project Filtering
+    const tabs = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('.project-card');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('bg-emberPink/20', 'text-white', 'border-emberPink');
+          t.classList.add('text-emberMuted', 'bg-[#161420]', 'border-emberBorder');
+        });
+        tab.classList.add('bg-emberPink/20', 'text-white', 'border-emberPink');
+        tab.classList.remove('text-emberMuted', 'bg-[#161420]', 'border-emberBorder');
+
+        const filter = tab.getAttribute('data-filter');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Resume Tabs
+    function switchResumeTab(tabId, el) {
+      document.querySelectorAll('.resume-tab').forEach(b => {
+        b.classList.remove('bg-emberPink/20', 'text-white', 'border-emberPink');
+        b.classList.add('text-emberMuted', 'bg-[#13121d]', 'border-emberBorder');
+      });
+      el.classList.add('bg-emberPink/20', 'text-white', 'border-emberPink');
+      el.classList.remove('text-emberMuted', 'bg-[#13121d]', 'border-emberBorder');
+
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+    }
+
+    // Modal Details (Real Projects from User's GitHub Repositories)
+    const projectDB = {
+      'repo-agent': {
+        title: 'Dataset Explorer Agent',
+        cat: 'Multi-Agent Autonomous System',
+        prob: 'Exploring and auditing messy raw CSV datasets manually takes hours of repetitive coding, profiling, and visualization work.',
+        appr: 'Built a 100% offline-first multi-agent architecture with Streamlit, Plotly, and Scikit-learn. Specialized agent nodes autonomously calculate data health metrics, run outlier detection tests, and recommend predictive machine learning models.',
+        res: ['Automated CSV profiling and dataset quality grading', 'Interactive Plotly visualization and distribution analysis', 'Algorithmic ML model recommendations with zero external API dependencies'],
+        stack: ['Python', 'Streamlit', 'Plotly', 'Scikit-learn', 'Multi-Agent Systems'],
+        url: 'https://github.com/azhar-data/Dataset_Explorer_Agent'
+      },
+      'repo-rag': {
+        title: 'RAG Document Assistant',
+        cat: 'Document Intelligence & Vector Retrieval',
+        prob: 'Extracting grounded answers from complex multipage PDFs and text files leads to search fatigue and manual verification overhead.',
+        appr: 'Engineered an end-to-end RAG architecture with LangChain and ChromaDB. Implemented semantic text splitting, sentence-transformer vector embeddings, and grounded synthesis via OpenRouter with verified page-number citations.',
+        res: ['Multi-file PDF and TXT semantic indexing', 'Grounded answer generation with exact source page citations', 'Fast in-memory ChromaDB vector store with Streamlit chat UI'],
+        stack: ['Python', 'LangChain', 'ChromaDB', 'Hugging Face', 'Streamlit'],
+        url: 'https://github.com/azhar-data/RAG-Document-Assistant'
+      },
+      'repo-dragshift': {
+        title: 'DragShift — Desktop File Studio',
+        cat: 'Desktop Tool & Batch File Automation',
+        prob: 'Everyday file operations (PDF merging, multi-format image compression, and batch conversions) usually require clunky or privacy-invasive online web converters.',
+        appr: 'Built a high-performance desktop file studio using Python 3.12 and native Windows desktop GUI. Features batch image compression algorithms, PDF manipulation routines, and offline drag-and-drop workflow.',
+        res: ['High-throughput batch image compression with zero cloud upload', 'Seamless PDF page merging and format reorganization', 'Clean modern desktop UI built for productivity'],
+        stack: ['Python 3.12', 'Desktop GUI', 'Pillow', 'PyPDF', 'File IO'],
+        url: 'https://github.com/azhar-data/dragshift_tool_v2'
+      },
+      'repo-arrowstack': {
+        title: 'Arrowstack · Data Science & Predictive ML',
+        cat: 'Exploratory Analysis & Regression Pipelines',
+        prob: 'Production machine learning requires rigorous exploratory validation, outlier analysis, and reproducible pipeline design.',
+        appr: 'Engineered two reproducible Python data science pipelines: Kaggle exploratory data analysis with correlation matrices and bootstrap confidence intervals, and an end-to-end predictive regression model with unit tests.',
+        res: ['Comprehensive statistical EDA on Kaggle Palmer Penguins benchmark', 'Trained predictive regression pipeline with measured benchmarks', 'Includes complete standalone scripts, figures, and automated tests'],
+        stack: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
+        url: 'https://github.com/azhar-data/ARROWSTACK'
+      },
+      'repo-nexskill': {
+        title: 'NexSkill ML & Data Science Suite',
+        cat: 'Machine Learning Classification & Regression',
+        prob: 'Translating theoretical machine learning concepts into clean, modular Python pipelines ready for production evaluation.',
+        appr: 'Constructed an applied suite of data science workflows covering missingness handling, label encoding, standard scaling, and training diverse classification and regression models.',
+        res: ['Applied ML workflows across diverse real-world datasets', 'Rigorous feature preprocessing and evaluation metrics', 'Clean modular repository structure for fast prototyping'],
+        stack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Data Preprocessing'],
+        url: 'https://github.com/azhar-data/Nexskill_project'
+      },
+      'repo-fullstack': {
+        title: 'Full-Stack AI Engineering Lab',
+        cat: 'End-to-End AI Stack & Web Scraping',
+        prob: 'Bridging the divide between foundational Python scripts and end-to-end AI systems.',
+        appr: 'Structured a multi-topic AI learning repository covering numerical exploration with NumPy, tabular manipulation with Pandas, automated web scrapers, and Generative AI prompt experiments.',
+        res: ['Hands-on scripts from data ingestion to model serving', 'Integrated web scraping and automated dataset curation', 'Continuous documentation of applied modern AI engineering'],
+        stack: ['Python', 'NumPy & Pandas', 'Web Scraping', 'Generative AI'],
+        url: 'https://github.com/azhar-data/Full-stack-Ai-by-Azhar'
+      }
+    };
+
+    function openModal(id) {
+      const p = projectDB[id];
+      if (!p) return;
+      document.getElementById('modal-body').innerHTML = `
+        <span class="text-xs font-mono text-emberCoral uppercase font-bold">${p.cat}</span>
+        <h3 class="font-display font-bold text-2xl text-white mt-1 mb-4">${p.title}</h3>
+        
+        <div class="space-y-4 text-xs text-emberMuted">
+          <div>
+            <h4 class="font-display font-bold text-white text-sm mb-1">The Problem</h4>
+            <p>${p.prob}</p>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-white text-sm mb-1">Architecture & Approach</h4>
+            <p>${p.appr}</p>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-white text-sm mb-1">Results</h4>
+            <ul class="list-disc list-inside space-y-1 text-emberText">
+              ${p.res.map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-white text-sm mb-1.5">Technologies</h4>
+            <div class="flex flex-wrap gap-1.5">
+              ${p.stack.map(s => `<span class="px-2.5 py-1 rounded-md bg-[#0d0f18] border border-white/10 font-mono text-emberCoral text-[11px]">${s}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-white/5 flex gap-3">
+          <a href="${p.url}" target="_blank" class="btn-ember px-4 py-2 rounded-full font-display text-xs flex items-center gap-1.5">
+            <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+              <path d="M9 18c-4.51 2-5-2-7-2"></path>
+            </svg>
+            <span>View Code on GitHub ↗</span>
+          </a>
+          <button onclick="closeModal()" class="btn-dark px-4 py-2 rounded-full font-display text-xs">Close</button>
+        </div>
+      `;
+      document.getElementById('case-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('case-modal').classList.add('hidden');
+    }
+
+    // Form submit
+    function handleContact(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const fb = document.getElementById('c-feedback');
+      btn.disabled = true;
+      btn.innerText = 'Transmitting...';
+      setTimeout(() => {
+        btn.innerText = 'Sent Successfully ✓';
+        fb.classList.remove('hidden');
+        document.getElementById('contact-form').reset();
+      }, 800);
+    }
+  </script>
+</body>
+</html>
