@@ -36,23 +36,16 @@ export default function Contact() {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
-    setStatus('loading');
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) throw new Error('Failed to send');
-      setStatus('success');
-      setFormData({ name: '', email: '', projectType: '', budget: '', details: '' });
-    } catch {
-      setStatus('error');
-    }
+    const subject = encodeURIComponent(`Portfolio inquiry: ${formData.projectType}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nProject type: ${formData.projectType}\nBudget: ${formData.budget || 'Not specified'}\n\nProject details:\n${formData.details}`
+    );
+    window.location.href = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
+    setStatus('success');
   };
 
   const updateField = (field: string, value: string) => {
